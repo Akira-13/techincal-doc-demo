@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Org-mode quickstart</title>
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <nav id="navbar">
+      <header>Org-mode quickstart</header>
+      <ul>
+        <li><a href="#Getting_started_with_Org-mode" class="nav-link">Getting started with Org-mode</a></li>
+        <li><a href="#Preamble" class="nav-link">Preamble</a></li>
+        <li><a href="#Heading" class="nav-link">Heading</a></li>
+        <li><a href="#Markup" class="nav-link">Markup</a></li>
+        <li><a href="#Lists" class="nav-link">Lists</a></li>
+        <li><a href="#Comments" class="nav-link">Comments</a></li>
+        <li><a href="#Footnotes" class="nav-link">Footnotes</a></li>
+        <li><a href="#References" class="nav-link">References</a></li>
+      </ul>
+    </nav>
+    <main id = "main-doc">
+      <section class = "main-section" id="Getting_started_with_Org-mode">
+        <header>Getting started with Org-mode</header>  
+        <p>In its simplest form, Org is like any other markup language.</p>
+        <p>You can write Org syntax in any text editor.</p>
+        <p>However, to experience the full potential of Org you need an editor that transforms Org syntax into a living, interactive document.</p>
+        <div class="org_install">
+          <p class="btn">
+            <b><a href="https://orgmode.org/org.html#Installation" class="btn">Install Org</a></b>
+          </p>
+        </div>
+      </section>
+
+      <section class = "main-section" id = "Preamble">
+        <header>Preamble</header>
+        <p>At the start of a file (before the first heading), it is common to set the title, author and other export options.</p>
+        <pre><code> #+title: The glories of Org
+#+author: A. Org Writer </code></pre>
+      </section>
+
+      <section class = "main-section" id="Heading">
+        <header>Heading</header>
+        <p>Lines that start with an asterisk <code>*</code> are headings.</p>
+        <p>A single <code>*</code> denotes a 1st-level heading, <code>**</code> denotes a 2nd-level heading, etc.</p>
+        <pre><code>* Welcome to Org-mode
+** Sub-heading
+Each extra ~*~ increases the depth by one level.</code></pre>
+        <p>In their simplest form headings are just the start of a section. However, any heading can also become a TODO item.</p>
+        <p>TODO items are the basic building block that Org uses to track and organize all kinds of tasks.</p>
+        <p>To add a TODO item to a heading, start the heading with a TODO keyword such as <code>TODO</code> or <code>HOLD</code>.</p>
+        <pre><code>* TODO Promulgate Org to the world
+** TODO Create a quickstart guide </code></pre>
+      </section>
+
+      <section class = "main-section" id="Markup">
+        <header>Markup</header>
+        <p>To mark up text in Org, simply surround it with one or more marker characters. <b>Bold</b>, <i>italic</i> and <ins>underline</ins> are fairly intuitive, and the ability to use <del>strikethrough</del> is a plus. You can <b><i>combine</i></b> the basic markup in any order, however <code>code</code> and <code>verbatim</code> need to be the <code>inner-most</code> markers if they are present since their contents are interpreted <code>_literally_</code>.</p>
+        <pre><code>To markup text in Org, simply surround it with one or more marker characters.
+*Bold*, /italic/ and _underline_ are fairly intuitive, and the ability to use
++strikethrough+ is a plus.  You can _/*combine*/_ the basic markup in any
+order, however ~code~ and =verbatim= need to be the *_~inner-most~_* markers
+if they are present since their contents are interpreted =_literally_=. </code></pre>
+        <p>See <a href="https://orgmode.org/worg/org-syntax.html#Emphasis_Markers" class="ext-link">Emphasis Markers</a> for more details</p>
+      </section>
+
+      <section class = "main-section" id="Lists">
+        <header>Lists</header>
+        <p>Unordered lists start with <code>+</code>, <code>-</code>, or <code>*</code><sup><a href="#Footnotes" class="footnote">1</a></sup>. Ordered lists start with <code>1</code>., <code>1)</code>, <code>A.</code>, or <code>A)</code>. Ordered and unordered bullets can be nested in any order.</p>
+        <pre><code> To buy:
+1. Milk
+2. Eggs
+- Organic
+3. Cheese
++ Parmesan
++ Mozzarella </code></pre>
+        <p>Lists can contain checkboxes <code>[ ]</code>, <code>[-]</code>, <code>[X]</code>.</p>
+<pre><code> - [ ] not started
+- [-] in progress
+- [X] complete </code></pre>
+        <p>Lists can contain tags (and checkboxes at the same time).</p>
+        <pre><code> - [ ] fruits :: get apples
+- [X] veggies :: get carrots </code></pre>
+      </section>
+
+      <section class="main-section" id="Comments">
+        <header>Comments</header>
+        <p>Org mode has a variety of ways to add comments.</p>
+        <ul>
+          <li>Line comments start with <code>#</code>.</li>
+          <li>Inline comments wrape <code>@@comment:like so@@</code>.</li>
+          <li>Block comments are wrapped with <code>#+BEGIN_COMMENT</code> and <code>#+END_COMMENT</code>.</li>
+          <li>Section Comments can be created by adding the <code>COMMENT</code> keyword to a heading <code>* COMMENT like so</code><sup><a href="#Footnotes" class="footnote">2</a></sup>.</li>
+          <li>Lorem ipsum dolor.</li>
+        </ul>
+          <pre><code># A line comment
+
+Example of an @@comment:inline@@ comment.
+
+Inline comments are used for end of line comments. @@comment:~#~ won't
+work@@ Since # only only works if preceeded by a newline follow by
+whitespace.
+
+#+begin_comment
+This is a block comment.
+It can span multiple line.
+As well as other markup.
+#+begin_src emacs-lisp
+(+ 1 2)
+#+end_src
+#+end_comment
+
+* A top level heading
+** COMMENT This section and subsections are commented out
+*** This heading inherits the =COMMENT= keyword
+This text is commented out
+** This heading is not commented
+This text will be exported and code blocks will run.</code></pre>
+      </section>
+      <section class="main-section" id="Footnotes">
+        <header>Footnotes</header>
+        <p><sup><a href="#Lists" class="footnote">1</a></sup> <code>*</code> cannot be used to start a plain list if it is immediately preceded by a newline because it will be interpreted as a heading.</p>
+        <p><sup><a href="#Comments" class="footnote">2</a></sup> <code>*</code>There are a number of more granular ways to control the exact behavior of headings, including use of the special tags <code>:ARCHIVE:</code> and <code>:noexport:</code>.</p>
+      </section>
+
+      <section class="main-section" id="References">
+        <header>References</header>
+        <p>The contents of this page were taken from <a href="https://orgmode.org/quickstart.html#fnr.1" class="ext-link">Org Mode official website</a>.</p>
+      </section>
+
+    </main>
+  </body>
+</html>
